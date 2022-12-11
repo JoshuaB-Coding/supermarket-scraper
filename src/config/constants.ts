@@ -1,24 +1,6 @@
-// export interface Website {
-//     name: string,
-//     url: string,
-//     enabled: boolean,
-// };
-
 import axios from "axios";
-import { MorrisonsClient } from "../clients/morrisonsClient";
 
-// export const Websites: Website[] = [
-//     {
-//         name: 'Morrisons',
-//         url: 'https://groceries.morrisons.com/webshop/startWebshop.do',
-//         enabled: false,
-//     },
-//     {
-//         name: 'Tesco',
-//         url: 'https://www.tesco.com/groceries/en-GB/shop/fresh-food/fresh-fruit/bananas',
-//         enabled: false,
-//     },
-// ];
+// each website url may not be needed anymore 
 
 enum Stores {
     Morrisons,
@@ -45,26 +27,20 @@ export class Websites {
         },
         {
             store: Stores.Tesco,
-            url: 'https://www.tesco.com/groceries/en-GB/shop/fresh-food/fresh-fruit/bananas',
+            url: 'https://www.tesco.com/groceries/en-GB/shop/fresh-food/all',
             enabled: false,
         },
     ]
 
-    static url(queryStore: Stores): string {
-        // Lazy - fix
-        var url: string;
-        this.stores.forEach(store => {
-            if (store.store == queryStore) {
-                if (!store.enabled) {
-                    console.error(`Store '${store.store}' is not enabled`);
-                }
-                url = store.url;
-            }
-        })
-        return url;
+    static url(queryStore: Stores): string | undefined {
+        const store = this.stores.find(store => store.store = queryStore);
+        if (!store.enabled) {
+            return;
+        }
+        return store.url;
     }
 }
 
-export class Contants {
+export class Constants {
     public static readonly axiosInstance = axios.create();
 }

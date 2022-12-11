@@ -12,7 +12,7 @@ export const Websites: Website[] = [
     },
     {
         name: 'Tesco',
-        url: 'https://www.tesco.com/groceries/en-GB/shop/fresh-food/fresh-fruit/bananas',
+        url: 'https://www.tesco.com/groceries/en-GB/shop/fresh-food/all',
         enabled: false,
     },
 ];
